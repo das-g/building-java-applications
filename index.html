@@ -1,217 +1,231 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
- <head> 
-  <meta charset="utf-8"> 
-  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--> 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-  <meta name="generator" content="Asciidoctor 1.5.3"> 
-  <title>Building Java Applications</title> 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"> 
-  <link rel="stylesheet" href="./coderay-asciidoctor.css"> 
-  <link rel="stylesheet" href="https://guides.gradle.org/asciidoctor.css"> 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Source+Code+Pro:500"> 
-  <link rel="apple-touch-icon" sizes="180x180" href="https://guides.gradle.org/icon/apple-touch-icon.png"> 
-  <link rel="icon" type="image/png" href="https://guides.gradle.org/icon/favicon-32x32.png" sizes="32x32"> 
-  <link rel="icon" type="image/png" href="https://guides.gradle.org/icon/favicon-16x16.png" sizes="16x16"> 
-  <link rel="manifest" href="https://guides.gradle.org/icon/manifest.json"> 
-  <link rel="mask-icon" href="https://guides.gradle.org/icon/safari-pinned-tab.svg" color="#5bbad5"> 
-  <link rel="shortcut icon" href="https://guides.gradle.org/icon/favicon.ico"> 
-  <meta name="apple-mobile-web-app-title" content="Creating Java Applications"> 
-  <meta name="application-name" content="Creating Java Applications"> 
-  <meta name="msapplication-config" content="https://guides.gradle.org/icon/browserconfig.xml"> 
-  <meta name="theme-color" content="#ffffff"> 
-  <script defer src="https://guides.gradle.org/js/set-time-to-complete-text.js"></script> 
-  <script>
+<head>
+<meta charset="utf-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.3">
+<meta name="author" content="Ken Kousen">
+<title>Building Java Applications</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+<link rel="stylesheet" href="https://guides.gradle.org/asciidoctor.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700|Source+Code+Pro:500">
+<link rel="apple-touch-icon" sizes="180x180" href="https://guides.gradle.org/icon/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="https://guides.gradle.org/icon/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="https://guides.gradle.org/icon/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="https://guides.gradle.org/icon/manifest.json">
+<link rel="mask-icon" href="https://guides.gradle.org/icon/safari-pinned-tab.svg" color="#5bbad5">
+<link rel="shortcut icon" href="https://guides.gradle.org/icon/favicon.ico">
+<meta name="apple-mobile-web-app-title" content="Creating Java Applications">
+<meta name="application-name" content="Creating Java Applications">
+<meta name="msapplication-config" content="https://guides.gradle.org/icon/browserconfig.xml">
+<meta name="theme-color" content="#ffffff">
+<script defer src="https://guides.gradle.org/js/set-time-to-complete-text.js"></script>
+<script>
   (function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,"script","https://www.google-analytics.com/analytics.js","ga");
   ga("create", "UA-4207603-1", "auto");
   ga("send", "pageview");
-</script> 
- </head> 
- <body class="article toc2 toc-right"> 
-  <div id="header">
-   <div style="padding-top: 10px;">
-    <a href="https://guides.gradle.org"><img src="http://guides.gradle.org/gradle-guides.svg" alt=""></a>
-   </div> 
-   <h1>Building Java Applications</h1> 
-   <div id="toc" class="toc2"> 
-    <div id="toctitle">
-     Table of Contents
-    </div> 
-    <ul class="sectlevel1"> 
-     <li><a href="#what_you_ll_build">What you’ll build</a></li> 
-     <li><a href="#what_you_ll_need">What you’ll need</a></li> 
-     <li><a href="#check_the_user_manual">Check the user manual</a></li> 
-     <li><a href="#run_the_init_task">Run the init task</a></li> 
-     <li><a href="#review_the_generated_project_files">Review the generated project files</a></li> 
-     <li><a href="#execute_the_build">Execute the build</a></li> 
-     <li><a href="#run_the_application">Run the application</a></li> 
-     <li><a href="#summary">Summary</a></li> 
-    </ul> 
-   </div> 
-  </div> 
-  <div id="content"> 
-   <div id="preamble"> 
-    <div class="sectionbody"> 
-     <div class="paragraph"> 
-      <p>This guide demonstrates how to create a Java project in the standard form using Gradle’s Build Init plugin.</p> 
-     </div> 
-    </div> 
-   </div> 
-   <div class="sect1"> 
-    <h2 id="what_you_ll_build"><a class="anchor" href="#what_you_ll_build"></a>What you’ll build</h2> 
-    <div class="sectionbody"> 
-     <div class="paragraph"> 
-      <p>You’ll generate a Java application with the standard layout.</p> 
-     </div> 
-    </div> 
-   </div> 
-   <div class="sect1"> 
-    <h2 id="what_you_ll_need"><a class="anchor" href="#what_you_ll_need"></a>What you’ll need</h2> 
-    <div class="sectionbody"> 
-     <div class="ulist"> 
-      <ul> 
-       <li> <p>About <span class="time-to-complete-text"></span></p> </li> 
-       <li> <p>A text editor</p> </li> 
-       <li> <p>A command prompt</p> </li> 
-       <li> <p>The Java Development Kit (JDK), version 1.7 or higher</p> </li> 
-       <li> <p>Any recent Gradle distribution</p> </li> 
-      </ul> 
-     </div> 
-    </div> 
-   </div> 
-   <div class="sect1"> 
-    <h2 id="check_the_user_manual"><a class="anchor" href="#check_the_user_manual"></a>Check the user manual</h2> 
-    <div class="sectionbody"> 
-     <div class="paragraph"> 
-      <p>Gradle comes with a built-in plugin called the Build Init plugin. It is documented in the Gradle User Manual at <a href="https://docs.gradle.org/current/userguide/build_init_plugin.html" class="bare">https://docs.gradle.org/current/userguide/build_init_plugin.html</a>.</p> 
-     </div> 
-     <div class="paragraph"> 
-      <p>The plugin has one task, called <code>init</code>, that generates the project. The <code>init</code> task calls the (also built-in) <code>wrapper</code> task to create a Gradle wrapper script, <code>gradlew</code>.</p> 
-     </div> 
-     <div class="paragraph"> 
-      <p>To run the <code>init</code> task, you run the following from a command prompt:</p> 
-     </div> 
-     <div class="listingblock"> 
-      <div class="content"> 
-       <pre>$ gradle init --type &lt;name&gt;</pre> 
-      </div> 
-     </div> 
-     <div class="paragraph"> 
-      <p>where <code>name</code> is one of the following:</p> 
-     </div> 
-     <div class="ulist"> 
-      <ul> 
-       <li> <p><code>java-application</code></p> </li> 
-       <li> <p><code>java-library</code></p> </li> 
-       <li> <p><code>scala-library</code></p> </li> 
-       <li> <p><code>groovy-library</code></p> </li> 
-       <li> <p><code>basic</code></p> </li> 
-      </ul> 
-     </div> 
-     <div class="paragraph"> 
-      <p>This guide uses the <code>java-application</code> type.</p> 
-     </div> 
-     <div class="paragraph"> 
-      <p>The first step is to create a folder for the new project and change directory into it.</p> 
-     </div> 
-     <div class="listingblock"> 
-      <div class="content"> 
-       <pre>$ mkdir java-demo
-$ cd java-demo</pre> 
-      </div> 
-     </div> 
-    </div> 
-   </div> 
-   <div class="sect1"> 
-    <h2 id="run_the_init_task"><a class="anchor" href="#run_the_init_task"></a>Run the init task</h2> 
-    <div class="sectionbody"> 
-     <div class="paragraph"> 
-      <p>From inside the new project directory, run the <code>init</code> task with the <code>java-application</code> argument.</p> 
-     </div> 
-     <div class="listingblock"> 
-      <div class="content"> 
-       <pre>$ gradle init --type java-application
+</script>
+</head>
+<body class="article toc2 toc-right">
+<div id="header"><div style="padding-top: 10px;"><a href="https://guides.gradle.org"><img src="http://guides.gradle.org/gradle-guides.svg" alt=""></a></div><h1>Building Java Applications</h1>
+<div class="details">
+<span id="author" class="author">Ken Kousen</span><br>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#what_you_ll_build">What you&#8217;ll build</a></li>
+<li><a href="#what_you_ll_need">What you&#8217;ll need</a></li>
+<li><a href="#check_the_user_manual">Check the user manual</a></li>
+<li><a href="#run_the_init_task">Run the init task</a></li>
+<li><a href="#review_the_generated_project_files">Review the generated project files</a></li>
+<li><a href="#execute_the_build">Execute the build</a></li>
+<li><a href="#run_the_application">Run the application</a></li>
+<li><a href="#summary">Summary</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This guide demonstrates how to create a Java project in the standard form using Gradle&#8217;s Build Init plugin.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="what_you_ll_build"><a class="anchor" href="#what_you_ll_build"></a>What you&#8217;ll build</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You&#8217;ll generate a Java application with the standard layout.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="what_you_ll_need"><a class="anchor" href="#what_you_ll_need"></a>What you&#8217;ll need</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>About <span class="time-to-complete-text"></span></p>
+</li>
+<li>
+<p>A text editor</p>
+</li>
+<li>
+<p>A command prompt</p>
+</li>
+<li>
+<p>The Java Development Kit (JDK), version 1.7 or higher</p>
+</li>
+<li>
+<p>Any recent Gradle distribution</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="check_the_user_manual"><a class="anchor" href="#check_the_user_manual"></a>Check the user manual</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Gradle comes with a built-in plugin called the Build Init plugin. It is documented in the Gradle User Manual at <a href="https://docs.gradle.org/current/userguide/build_init_plugin.html" class="bare">https://docs.gradle.org/current/userguide/build_init_plugin.html</a>.</p>
+</div>
+<div class="paragraph">
+<p>The plugin has one task, called <code>init</code>, that generates the project. The <code>init</code> task calls the (also built-in) <code>wrapper</code> task to create a Gradle wrapper script, <code>gradlew</code>.</p>
+</div>
+<div class="paragraph">
+<p>To run the <code>init</code> task, you run the following from a command prompt:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ gradle init --type &lt;name&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>where <code>name</code> is one of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>java-application</code></p>
+</li>
+<li>
+<p><code>java-library</code></p>
+</li>
+<li>
+<p><code>scala-library</code></p>
+</li>
+<li>
+<p><code>groovy-library</code></p>
+</li>
+<li>
+<p><code>basic</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This guide uses the <code>java-application</code> type.</p>
+</div>
+<div class="paragraph">
+<p>The first step is to create a folder for the new project and change directory into it.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ mkdir java-demo
+$ cd java-demo</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="run_the_init_task"><a class="anchor" href="#run_the_init_task"></a>Run the init task</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>From inside the new project directory, run the <code>init</code> task with the <code>java-application</code> argument.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ gradle init --type java-application
 Starting a Gradle Daemon (subsequent builds will be faster)
 :wrapper
 :init
 
-BUILD SUCCESSFUL</pre> 
-      </div> 
-     </div> 
-     <div class="paragraph"> 
-      <p>The <code>init</code> task runs the <code>wrapper</code> task first, which generates the <code>gradlew</code> and <code>gradlew.bat</code> wrapper scripts. Then it creates the new project with the following structure:</p> 
-     </div> 
-     <div class="exampleblock"> 
-      <div class="content"> 
-       <div class="listingblock"> 
-        <div class="content"> 
-         <pre>├── build.gradle
+BUILD SUCCESSFUL</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>init</code> task runs the <code>wrapper</code> task first, which generates the <code>gradlew</code> and <code>gradlew.bat</code> wrapper scripts. Then it creates the new project with the following structure:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre>├── build.gradle
 ├── gradle    <i class="conum" data-value="1"></i><b>(1)</b>
-│&nbsp;&nbsp; └── wrapper
-│&nbsp;&nbsp;     ├── gradle-wrapper.jar
-│&nbsp;&nbsp;     └── gradle-wrapper.properties
+│   └── wrapper
+│       ├── gradle-wrapper.jar
+│       └── gradle-wrapper.properties
 ├── gradlew
 ├── gradlew.bat
 ├── settings.gradle
 └── src
     ├── main
-    │&nbsp;&nbsp; └── java  <i class="conum" data-value="2"></i><b>(2)</b>
-    │&nbsp;&nbsp;     └── App.java
+    │   └── java  <i class="conum" data-value="2"></i><b>(2)</b>
+    │       └── App.java
     └── test      <i class="conum" data-value="3"></i><b>(3)</b>
         └── java
-            └── AppTest.java</pre> 
-        </div> 
-       </div> 
-       <div class="colist arabic"> 
-        <table> 
-         <tbody>
-          <tr> 
-           <td><i class="conum" data-value="1"></i><b>1</b></td> 
-           <td>Generated folder for wrapper files</td> 
-          </tr> 
-          <tr> 
-           <td><i class="conum" data-value="2"></i><b>2</b></td> 
-           <td>Default Java source folder</td> 
-          </tr> 
-          <tr> 
-           <td><i class="conum" data-value="3"></i><b>3</b></td> 
-           <td>Default Java test folder</td> 
-          </tr> 
-         </tbody>
-        </table> 
-       </div> 
-      </div> 
-     </div> 
-    </div> 
-   </div> 
-   <div class="sect1"> 
-    <h2 id="review_the_generated_project_files"><a class="anchor" href="#review_the_generated_project_files"></a>Review the generated project files</h2> 
-    <div class="sectionbody"> 
-     <div class="paragraph"> 
-      <p>The <code>settings.gradle</code> file is heavily commented, but has only one active line:</p> 
-     </div> 
-     <div class="listingblock"> 
-      <div class="content"> 
-       <pre class="CodeRay highlight"><code data-lang="groovy">rootProject.name = <span class="string"><span class="delimiter">'</span><span class="content">java-demo</span><span class="delimiter">'</span></span></code></pre> 
-      </div> 
-     </div> 
-     <div class="paragraph"> 
-      <p>This assigns the name of the root project to <code>java-demo</code>, which is the default.</p> 
-     </div> 
-     <div class="paragraph"> 
-      <p>The generated <code>build.gradle</code> file also has many comments. The active portion is reproduced here (note version numbers for the dependencies may be updated in later versions of Gradle):</p> 
-     </div> 
-     <div class="exampleblock"> 
-      <div class="title">
-       Example 1. Generated build.gradle
-      </div> 
-      <div class="content"> 
-       <div class="listingblock"> 
-        <div class="content"> 
-         <pre class="CodeRay highlight"><code data-lang="groovy">apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">'</span><span class="content">java</span><span class="delimiter">'</span></span>
+            └── AppTest.java</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Generated folder for wrapper files</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Default Java source folder</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Default Java test folder</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="review_the_generated_project_files"><a class="anchor" href="#review_the_generated_project_files"></a>Review the generated project files</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>settings.gradle</code> file is heavily commented, but has only one active line:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">rootProject.name = <span class="string"><span class="delimiter">'</span><span class="content">java-demo</span><span class="delimiter">'</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This assigns the name of the root project to <code>java-demo</code>, which is the default.</p>
+</div>
+<div class="paragraph">
+<p>The generated <code>build.gradle</code> file also has many comments. The active portion is reproduced here (note version numbers for the dependencies may be updated in later versions of Gradle):</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 1. Generated build.gradle</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="groovy">apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">'</span><span class="content">java</span><span class="delimiter">'</span></span>
 apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">'</span><span class="content">application</span><span class="delimiter">'</span></span>
 
 repositories {
@@ -223,107 +237,99 @@ dependencies {
     testCompile <span class="string"><span class="delimiter">'</span><span class="content">junit:junit:4.12</span><span class="delimiter">'</span></span>         <i class="conum" data-value="3"></i><b>(3)</b>
 }
 
-mainClassName = <span class="string"><span class="delimiter">'</span><span class="content">App</span><span class="delimiter">'</span></span>  <i class="conum" data-value="4"></i><b>(4)</b></code></pre> 
-        </div> 
-       </div> 
-       <div class="colist arabic"> 
-        <table> 
-         <tbody>
-          <tr> 
-           <td><i class="conum" data-value="1"></i><b>1</b></td> 
-           <td>public Bintray Artifactory repository</td> 
-          </tr> 
-          <tr> 
-           <td><i class="conum" data-value="2"></i><b>2</b></td> 
-           <td>Google Guava library</td> 
-          </tr> 
-          <tr> 
-           <td><i class="conum" data-value="3"></i><b>3</b></td> 
-           <td>JUnit testing library</td> 
-          </tr> 
-          <tr> 
-           <td><i class="conum" data-value="4"></i><b>4</b></td> 
-           <td>Class with "main" method (used by Application plugin)</td> 
-          </tr> 
-         </tbody>
-        </table> 
-       </div> 
-      </div> 
-     </div> 
-     <div class="paragraph"> 
-      <p>The build file adds the <code>java</code> and <code>application</code> plugins. The former support Java projects. The latter lets you designate one class as having a <code>main</code> method, which can be executed by the build from the command line. In the demo, the name of the <code>main</code> class is <code>App</code>.</p> 
-     </div> 
-     <div class="paragraph"> 
-      <p>The file <code>src/main/java/App.java</code> is shown here:</p> 
-     </div> 
-     <div class="exampleblock"> 
-      <div class="title">
-       Example 2. The generated App.java class
-      </div> 
-      <div class="content"> 
-       <div class="listingblock"> 
-        <div class="content"> 
-         <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">App</span> {
+mainClassName = <span class="string"><span class="delimiter">'</span><span class="content">App</span><span class="delimiter">'</span></span>  <i class="conum" data-value="4"></i><b>(4)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>public Bintray Artifactory repository</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Google Guava library</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>JUnit testing library</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Class with "main" method (used by Application plugin)</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The build file adds the <code>java</code> and <code>application</code> plugins. The former support Java projects. The latter lets you designate one class as having a <code>main</code> method, which can be executed by the build from the command line. In the demo, the name of the <code>main</code> class is <code>App</code>.</p>
+</div>
+<div class="paragraph">
+<p>The file <code>src/main/java/App.java</code> is shown here:</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 2. The generated App.java class</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">App</span> {
     <span class="directive">public</span> <span class="predefined-type">String</span> getGreeting() {
-        <span class="keyword">return</span> <span class="string"><span class="delimiter">"</span><span class="content">Hello world.</span><span class="delimiter">"</span></span>;
+        <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello world.</span><span class="delimiter">&quot;</span></span>;
     }
 
     <span class="directive">public</span> <span class="directive">static</span> <span class="type">void</span> main(<span class="predefined-type">String</span><span class="type">[]</span> args) {  <i class="conum" data-value="1"></i><b>(1)</b>
         <span class="predefined-type">System</span>.out.println(<span class="keyword">new</span> App().getGreeting());
     }
-}</code></pre> 
-        </div> 
-       </div> 
-       <div class="colist arabic"> 
-        <table> 
-         <tbody>
-          <tr> 
-           <td><i class="conum" data-value="1"></i><b>1</b></td> 
-           <td>Called by Application plugin "run" task</td> 
-          </tr> 
-         </tbody>
-        </table> 
-       </div> 
-      </div> 
-     </div> 
-     <div class="paragraph"> 
-      <p>The test class, <code>src/test/java/AppTest.java</code> is shown next:</p> 
-     </div> 
-     <div class="exampleblock"> 
-      <div class="title">
-       Example 3. The JUnit test, AppTest
-      </div> 
-      <div class="content"> 
-       <div class="listingblock"> 
-        <div class="content"> 
-         <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">org.junit.Test</span>;
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Called by Application plugin "run" task</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The test class, <code>src/test/java/AppTest.java</code> is shown next:</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 3. The JUnit test, AppTest</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">org.junit.Test</span>;
 <span class="keyword">import</span> <span class="include">static</span> <span class="include">org.junit.Assert</span>.*;
 
 <span class="directive">public</span> <span class="type">class</span> <span class="class">AppTest</span> {
     <span class="annotation">@Test</span> <span class="directive">public</span> <span class="type">void</span> testAppHasAGreeting() {
         App classUnderTest = <span class="keyword">new</span> App();
-        assertNotNull(<span class="string"><span class="delimiter">"</span><span class="content">app should have a greeting</span><span class="delimiter">"</span></span>,
+        assertNotNull(<span class="string"><span class="delimiter">&quot;</span><span class="content">app should have a greeting</span><span class="delimiter">&quot;</span></span>,
                        classUnderTest.getGreeting());
     }
-}</code></pre> 
-        </div> 
-       </div> 
-      </div> 
-     </div> 
-     <div class="paragraph"> 
-      <p>The generated test class has a single test annotated with JUnit’s <code>@Test</code> annotation. The test instantiates the <code>App</code> class, invokes the <code>getGreeting</code> method, and checks that the returned value is not null.</p> 
-     </div> 
-    </div> 
-   </div> 
-   <div class="sect1"> 
-    <h2 id="execute_the_build"><a class="anchor" href="#execute_the_build"></a>Execute the build</h2> 
-    <div class="sectionbody"> 
-     <div class="paragraph"> 
-      <p>To build the project, run the <code>build</code> command. You can use the regular <code>gradle</code> command, but when a project includes a wrapper script, it is considered good form to use it instead.</p> 
-     </div> 
-     <div class="listingblock"> 
-      <div class="content"> 
-       <pre>$ ./gradlew build
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The generated test class has a single test annotated with JUnit&#8217;s <code>@Test</code> annotation. The test instantiates the <code>App</code> class, invokes the <code>getGreeting</code> method, and checks that the returned value is not null.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="execute_the_build"><a class="anchor" href="#execute_the_build"></a>Execute the build</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To build the project, run the <code>build</code> command. You can use the regular <code>gradle</code> command, but when a project includes a wrapper script, it is considered good form to use it instead.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ ./gradlew build
 :compileJava
 // Download of Guava if not already cached...
 :processResources UP-TO-DATE
@@ -341,44 +347,46 @@ mainClassName = <span class="string"><span class="delimiter">'</span><span class
 :check
 :build
 
-BUILD SUCCESSFUL</pre> 
-      </div> 
-     </div> 
-     <div class="admonitionblock note"> 
-      <table> 
-       <tbody>
-        <tr> 
-         <td class="icon"> <i class="fa icon-note" title="Note"></i> </td> 
-         <td class="content"> The first time you run the wrapper script, <code>gradlew</code>, there may be a delay while that version of <code>gradle</code> is downloaded and stored locally in your <code>~/.gradle/wrapper/dists</code> folder. </td> 
-        </tr> 
-       </tbody>
-      </table> 
-     </div> 
-     <div class="paragraph"> 
-      <p>The first time you run the build, Gradle will check whether or not you already have the Guava and JUnit libraries in your cache under your <code>~/.gradle</code> directory. If not, the libraries will be downloaded and stored there. The next time you run the build, the cached versions will be used. The <code>build</code> task compiles the classes, runs the tests, and generates a test report.</p> 
-     </div> 
-     <div class="paragraph"> 
-      <p>You can view the test report by opening the HTML output file, located at <code>build/reports/tests/test/index.html</code>.</p> 
-     </div> 
-     <div class="paragraph"> 
-      <p>A sample report is shown here:</p> 
-     </div> 
-     <div class="imageblock"> 
-      <div class="content"> 
-       <img src="images/Test-Summary.png" alt="Test Summary"> 
-      </div> 
-     </div> 
-    </div> 
-   </div> 
-   <div class="sect1"> 
-    <h2 id="run_the_application"><a class="anchor" href="#run_the_application"></a>Run the application</h2> 
-    <div class="sectionbody"> 
-     <div class="paragraph"> 
-      <p>Because the Gradle build used the Application plugin, you can run the application from the command line. First, use the <code>tasks</code> task to see what task has been added by the plugin.</p> 
-     </div> 
-     <div class="listingblock"> 
-      <div class="content"> 
-       <pre>$ ./gradlew tasks
+BUILD SUCCESSFUL</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The first time you run the wrapper script, <code>gradlew</code>, there may be a delay while that version of <code>gradle</code> is downloaded and stored locally in your <code>~/.gradle/wrapper/dists</code> folder.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The first time you run the build, Gradle will check whether or not you already have the Guava and JUnit libraries in your cache under your <code>~/.gradle</code> directory. If not, the libraries will be downloaded and stored there. The next time you run the build, the cached versions will be used. The <code>build</code> task compiles the classes, runs the tests, and generates a test report.</p>
+</div>
+<div class="paragraph">
+<p>You can view the test report by opening the HTML output file, located at <code>build/reports/tests/test/index.html</code>.</p>
+</div>
+<div class="paragraph">
+<p>A sample report is shown here:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Test-Summary.png" alt="Test Summary">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="run_the_application"><a class="anchor" href="#run_the_application"></a>Run the application</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Because the Gradle build used the Application plugin, you can run the application from the command line. First, use the <code>tasks</code> task to see what task has been added by the plugin.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ ./gradlew tasks
 :tasks
 
 ------------------------------------------------------------
@@ -389,47 +397,55 @@ Application tasks
 -----------------
 run - Runs this project as a JVM application
 
-// ... many other tasks ...</pre> 
-      </div> 
-     </div> 
-     <div class="paragraph"> 
-      <p>The <code>run</code> task tells Gradle to execute the <code>main</code> method in the class assigned to the <code>mainClassName</code> property.</p> 
-     </div> 
-     <div class="listingblock"> 
-      <div class="content"> 
-       <pre>$ ./gradlew run
+// ... many other tasks ...</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>run</code> task tells Gradle to execute the <code>main</code> method in the class assigned to the <code>mainClassName</code> property.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>$ ./gradlew run
 :compileJava UP-TO-DATE
 :processResources UP-TO-DATE
 :classes UP-TO-DATE
 :run
 Hello world.
 
-BUILD SUCCESSFUL</pre> 
-      </div> 
-     </div> 
-    </div> 
-   </div> 
-   <div class="sect1"> 
-    <h2 id="summary"><a class="anchor" href="#summary"></a>Summary</h2> 
-    <div class="sectionbody"> 
-     <div class="paragraph"> 
-      <p>You now have a new Java project that you generated using Gradle’s build init plugin. In the process, you saw:</p> 
-     </div> 
-     <div class="ulist"> 
-      <ul> 
-       <li> <p>How to generate a Java application</p> </li> 
-       <li> <p>How the generated build file and sample Java files are structured</p> </li> 
-       <li> <p>How to run the build and view the test report</p> </li> 
-       <li> <p>How to execute a Java application using the <code>run</code> task from the Application plugin</p> </li> 
-      </ul> 
-     </div> 
-    </div> 
-   </div> 
-  </div> 
-  <div id="footer"> 
-   <div id="footer-text">
-     Last updated 2017-05-30 15:30:07 UTC 
-   </div> 
-  </div>  
- </body>
+BUILD SUCCESSFUL</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="summary"><a class="anchor" href="#summary"></a>Summary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You now have a new Java project that you generated using Gradle&#8217;s build init plugin. In the process, you saw:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>How to generate a Java application</p>
+</li>
+<li>
+<p>How the generated build file and sample Java files are structured</p>
+</li>
+<li>
+<p>How to run the build and view the test report</p>
+</li>
+<li>
+<p>How to execute a Java application using the <code>run</code> task from the Application plugin</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2017-06-09 14:02:07 UTC
+</div>
+</div>
+</body>
 </html>
