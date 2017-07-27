@@ -74,7 +74,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>About <span class="time-to-complete-text"></span></p>
+<p>About <span class="time-to-complete-text">NN</span></p>
 </li>
 <li>
 <p>A text editor</p>
@@ -104,7 +104,7 @@
 <div class="paragraph">
 <p>To run the <code>init</code> task, you run the following from a command prompt:</p>
 </div>
-<div class="listingblock">
+<div class="listingblock terminal">
 <div class="content">
 <pre>$ gradle init --type &lt;name&gt;</pre>
 </div>
@@ -137,7 +137,7 @@
 <div class="paragraph">
 <p>The first step is to create a folder for the new project and change directory into it.</p>
 </div>
-<div class="listingblock">
+<div class="listingblock terminal">
 <div class="content">
 <pre>$ mkdir java-demo
 $ cd java-demo</pre>
@@ -151,7 +151,7 @@ $ cd java-demo</pre>
 <div class="paragraph">
 <p>From inside the new project directory, run the <code>init</code> task with the <code>java-application</code> argument.</p>
 </div>
-<div class="listingblock">
+<div class="listingblock terminal">
 <div class="content">
 <pre>$ gradle init --type java-application
 Starting a Gradle Daemon (subsequent builds will be faster)
@@ -164,8 +164,6 @@ BUILD SUCCESSFUL</pre>
 <div class="paragraph">
 <p>The <code>init</code> task runs the <code>wrapper</code> task first, which generates the <code>gradlew</code> and <code>gradlew.bat</code> wrapper scripts. Then it creates the new project with the following structure:</p>
 </div>
-<div class="exampleblock">
-<div class="content">
 <div class="listingblock">
 <div class="content">
 <pre>├── build.gradle
@@ -203,8 +201,6 @@ BUILD SUCCESSFUL</pre>
 </div>
 </div>
 </div>
-</div>
-</div>
 <div class="sect1">
 <h2 id="review_the_generated_project_files"><a class="anchor" href="#review_the_generated_project_files"></a>Review the generated project files</h2>
 <div class="sectionbody">
@@ -212,8 +208,9 @@ BUILD SUCCESSFUL</pre>
 <p>The <code>settings.gradle</code> file is heavily commented, but has only one active line:</p>
 </div>
 <div class="listingblock">
+<div class="title">settings.gradle</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="groovy">rootProject.name = <span class="string"><span class="delimiter">'</span><span class="content">java-demo</span><span class="delimiter">'</span></span></code></pre>
+<pre class="CodeRay highlight"><code data-lang="groovy">rootProject.name=<span class="string"><span class="delimiter">'</span><span class="content">java-demo</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -222,10 +219,8 @@ BUILD SUCCESSFUL</pre>
 <div class="paragraph">
 <p>The generated <code>build.gradle</code> file also has many comments. The active portion is reproduced here (note version numbers for the dependencies may be updated in later versions of Gradle):</p>
 </div>
-<div class="exampleblock">
-<div class="title">Example 1. Generated build.gradle</div>
-<div class="content">
 <div class="listingblock">
+<div class="title">build.gradle</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="groovy">apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">'</span><span class="content">java</span><span class="delimiter">'</span></span>
 apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">'</span><span class="content">application</span><span class="delimiter">'</span></span>
@@ -235,7 +230,7 @@ repositories {
 }
 
 dependencies {
-    compile <span class="string"><span class="delimiter">'</span><span class="content">com.google.guava:guava:20.0</span><span class="delimiter">'</span></span>  <i class="conum" data-value="2"></i><b>(2)</b>
+    compile <span class="string"><span class="delimiter">'</span><span class="content">com.google.guava:guava:21.0</span><span class="delimiter">'</span></span>  <i class="conum" data-value="2"></i><b>(2)</b>
     testCompile <span class="string"><span class="delimiter">'</span><span class="content">junit:junit:4.12</span><span class="delimiter">'</span></span>         <i class="conum" data-value="3"></i><b>(3)</b>
 }
 
@@ -262,18 +257,14 @@ mainClassName = <span class="string"><span class="delimiter">'</span><span class
 </tr>
 </table>
 </div>
-</div>
-</div>
 <div class="paragraph">
 <p>The build file adds the <code>java</code> and <code>application</code> plugins. The former support Java projects. The latter lets you designate one class as having a <code>main</code> method, which can be executed by the build from the command line. In the demo, the name of the <code>main</code> class is <code>App</code>.</p>
 </div>
 <div class="paragraph">
 <p>The file <code>src/main/java/App.java</code> is shown here:</p>
 </div>
-<div class="exampleblock">
-<div class="title">Example 2. The generated App.java class</div>
-<div class="content">
 <div class="listingblock">
+<div class="title">src/main/java/App.java</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">App</span> {
     <span class="directive">public</span> <span class="predefined-type">String</span> getGreeting() {
@@ -294,15 +285,11 @@ mainClassName = <span class="string"><span class="delimiter">'</span><span class
 </tr>
 </table>
 </div>
-</div>
-</div>
 <div class="paragraph">
 <p>The test class, <code>src/test/java/AppTest.java</code> is shown next:</p>
 </div>
-<div class="exampleblock">
-<div class="title">Example 3. The JUnit test, AppTest</div>
-<div class="content">
 <div class="listingblock">
+<div class="title">src/test/java/AppTest.java</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">org.junit.Test</span>;
 <span class="keyword">import</span> <span class="include">static</span> <span class="include">org.junit.Assert</span>.*;
@@ -311,11 +298,9 @@ mainClassName = <span class="string"><span class="delimiter">'</span><span class
     <span class="annotation">@Test</span> <span class="directive">public</span> <span class="type">void</span> testAppHasAGreeting() {
         App classUnderTest = <span class="keyword">new</span> App();
         assertNotNull(<span class="string"><span class="delimiter">&quot;</span><span class="content">app should have a greeting</span><span class="delimiter">&quot;</span></span>,
-                       classUnderTest.getGreeting());
+            classUnderTest.getGreeting());
     }
 }</code></pre>
-</div>
-</div>
 </div>
 </div>
 <div class="paragraph">
@@ -329,12 +314,11 @@ mainClassName = <span class="string"><span class="delimiter">'</span><span class
 <div class="paragraph">
 <p>To build the project, run the <code>build</code> command. You can use the regular <code>gradle</code> command, but when a project includes a wrapper script, it is considered good form to use it instead.</p>
 </div>
-<div class="listingblock">
+<div class="listingblock terminal">
 <div class="content">
 <pre>$ ./gradlew build
 :compileJava
-// Download of Guava if not already cached...
-:processResources UP-TO-DATE
+:processResources NO-SOURCE
 :classes
 :jar
 :startScripts
@@ -342,8 +326,7 @@ mainClassName = <span class="string"><span class="delimiter">'</span><span class
 :distZip
 :assemble
 :compileTestJava
-// Download of JUnit if not already cached...
-:processTestResources UP-TO-DATE
+:processTestResources NO-SOURCE
 :testClasses
 :test
 :check
@@ -409,10 +392,11 @@ run - Runs this project as a JVM application
 <div class="content">
 <pre>$ ./gradlew run
 :compileJava UP-TO-DATE
-:processResources UP-TO-DATE
+:processResources NO-SOURCE
 :classes UP-TO-DATE
 :run
 Hello world.
+
 
 BUILD SUCCESSFUL</pre>
 </div>
@@ -454,7 +438,7 @@ BUILD SUCCESSFUL</pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-07-07 08:12:42 UTC
+Last updated 2017-07-27 10:33:00 UTC
 </div>
 </div>
 </body>
