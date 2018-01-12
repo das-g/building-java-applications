@@ -5,8 +5,8 @@ plugins {
 }
 
 configure<org.gradle.guides.GuidesExtension> {
-    setRepoPath("gradle-guides/creating-java-applications")
-    setMainAuthor("Ken Kousen")
+    repoPath = "gradle-guides/creating-java-applications"
+    mainAuthor = "Ken Kousen"
 }
 
 buildScan {
