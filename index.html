@@ -343,8 +343,10 @@ BUILD SUCCESSFUL</pre>
 <div class="listingblock">
 <div class="title">build.gradle</div>
 <div class="content">
-<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">apply plugin: 'java'
-apply plugin: 'application'
+<pre class="prettyprint highlight"><code class="language-groovy" data-lang="groovy">plugins {
+    id 'java'
+    id 'application'
+}
 
 repositories {
     jcenter()  <i class="conum" data-value="1"></i><b>(1)</b>
