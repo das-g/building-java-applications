@@ -214,7 +214,7 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>This guide demonstrates how to use Gradle&#8217;s Build Init plugin to create a Java application that follows Gradle conventions.</p>
+<p>This guide demonstrates how to use Gradle&#8217;s Build Init plugin to create a new Java application that follows Gradle conventions.</p>
 </div>
 </div>
 </div>
@@ -233,10 +233,10 @@
 <p>A command prompt</p>
 </li>
 <li>
-<p>The Java Development Kit (JDK), version 1.8 or higher</p>
+<p>A <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java Development Kit</a> (JDK) version 8 or higher</p>
 </li>
 <li>
-<p>A Gradle distribution, version 5.4.1 or higher.</p>
+<p>A <a href="https://gradle.org/install">Gradle distribution</a>, version 5.4.1 or better</p>
 </li>
 </ul>
 </div>
@@ -246,10 +246,8 @@
 <h2 id="check_the_user_manual"><a class="anchor" href="#check_the_user_manual"></a><a class="link" href="#check_the_user_manual">Check the user manual</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Gradle comes with a built-in plugin called the Build Init plugin. It is documented in the Gradle User Manual at <a href="https://docs.gradle.org/5.4.1/userguide/build_init_plugin.html" class="bare">https://docs.gradle.org/5.4.1/userguide/build_init_plugin.html</a>.</p>
-</div>
-<div class="paragraph">
-<p>The plugin provides a task, called <code>init</code>, that generates the project. The plugin also uses the (also built-in) <code>wrapper</code> task to create a Gradle wrapper script, <code>gradlew</code>.</p>
+<p>Gradle comes with a built-in plugin called the Build Init plugin. It is documented in the <a href="https://docs.gradle.org/5.4.1/userguide/build_init_plugin.html">Gradle User Manual</a>.
+The plugin provides a task, called <code>init</code>, that generates the project. The plugin also uses the (also built-in) <code>wrapper</code> task to create a Gradle wrapper script, <code>gradlew</code>.</p>
 </div>
 </div>
 </div>
@@ -309,6 +307,9 @@ Source package (default: demo):
 BUILD SUCCESSFUL in 1s
 2 actionable tasks: 2 executed</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>If you prefer the Kotlin DSL, you can select <code>kotlin</code> for the build script DSL.</p>
 </div>
 <div class="paragraph">
 <p>The <code>init</code> task runs the <code>wrapper</code> task first, which generates the <code>gradlew</code> and <code>gradlew.bat</code> wrapper scripts. Then it creates the new project with the following structure:</p>
@@ -498,11 +499,10 @@ application {
 
 public class App {
     public String getGreeting() {
-        <i class="conum" data-value="1"></i><b>(1)</b>
         return "Hello world.";
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) {  <i class="conum" data-value="1"></i><b>(1)</b>
         System.out.println(new App().getGreeting());
     }
 }</code></pre>
